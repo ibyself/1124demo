@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>回到顶部</title>
+		<style>
+			body{height: 2000px;}
+			.toTop{
+				width: 30px;
+				height: 40px;
+				background: #CCCCCC;
+				font-size: 14px;
+				cursor:pointer;
+				position: fixed;
+				right:20px;
+				bottom:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="toTop" class="toTop">返回顶部</div>
+		<script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+		<script type="text/javascript">
+			var time=300;
+			var itemTime=30;
+			$('#toTop').click(function(){
+				var offset=$(document).scrollTop();
+				var itemOffset=offset/(time/itemTime);
+				var timer=setInterval(function(){
+					if(offset<=0){
+						clearInterval(timer);
+					}
+					offset-=itemOffset;
+					$(document).scrollTop(offset);
+				},itemTime)
+			})
+		</script>
+	</body>
+</html>

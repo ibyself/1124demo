@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Tab点击切换</title>
+		<style>
+			*{margin: 0;padding: 0;list-style: none;}
+			.tab{overflow: hidden;}
+			.tab li{
+				float:left;
+				width:80px;
+				height:40px;
+				line-height: 40px;
+				cursor: pointer;
+				text-align: center;
+				border: 1px solid #ccc;
+			}
+			.con{position: relative;}
+			.c1,.c2,.c3{
+				width: 300px;
+				height: 100px;
+				padding: 30px;
+				position: absolute;
+				top: 0;
+				left: 0;
+				background: palevioletred;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h2>点击切换</h2>
+		<ul class="tab" id='tab'>
+			<li id="tab1" value="1">1</li>
+			<li id="tab2" value="2">2</li>
+			<li id="tab3" value="3">3</li>
+		</ul>
+		<div class="con">
+			<div id="c1" class="c1">div1</div>
+			<div id="c2" style="display: none;" class="c2">div2</div>
+			<div id="c3" style="display: none;" class="c3">div3</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/1.10.1/jquery.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var index=0;
+				var $divs=$('.con div');
+				$('ul li').click(function(){
+					var clickIndex=$(this).index();
+					if(index==clickIndex){
+						return;
+					}
+					$divs.get(index).style.display='none';
+					$divs.get(clickIndex).style.display='block';
+					index=clickIndex;
+				})
+			})
+		</script>
+	</body>
+</html>
